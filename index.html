@@ -8,6 +8,23 @@
 	<link rel="icon" href="#">
 	<title>Theme Switcher</title>
 	<link rel="stylesheet" href="styles/css/style.css">
+	<script>
+		(function () {
+			const theme = localStorage.getItem('theme');
+			if (theme === 'light') {
+				document.documentElement.classList.add('light');
+			} else if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				if (prefersDarkScheme) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.add('light');
+				}
+			}
+		})();
+	</script>
 </head>
 
 <body>
